@@ -16,36 +16,11 @@ export const cryptoApi = createApi({
     getCryptos: builder.query({
       query: (count) => createRequest(`/coins?limit=${count}`),
     }),
+
+    getCryptoDetails: builder.query({
+      query: (coinId) => createRequest(`/coin/${coinId}`),
+    }),
   }),
 });
 
-export const { useGetCryptosQuery } = cryptoApi;
-
-// const axios = require("axios");
-
-// const options = {
-//   method: "GET",
-//   url: "https://coinranking1.p.rapidapi.com/coins",
-//   params: {
-//     referenceCurrencyUuid: "yhjMzLPhuIDl",
-//     timePeriod: "24h",
-//     "tiers[0]": "1",
-//     orderBy: "marketCap",
-//     orderDirection: "desc",
-//     limit: "50",
-//     offset: "0",
-//   },
-//   headers: {
-//     "X-RapidAPI-Key": "fc58542975msh9d3f04059f03ab4p1d7c9ejsncbed9f0b5e65",
-//     "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
-//   },
-// };
-
-// axios
-//   .request(options)
-//   .then(function (response) {
-//     console.log(response.data);
-//   })
-//   .catch(function (error) {
-//     console.error(error);
-//   });
+export const { useGetCryptosQuery, useGetCryptoDetailsQuery } = cryptoApi;
